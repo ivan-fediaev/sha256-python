@@ -39,7 +39,7 @@ class XOR:
             if currSum == 1:
                 result[i] = '1'
 
-            time.sleep(0.1)
+            time.sleep(0.15)
             print(''.join(result) + '\n' + ''.join(pointer),end='\033[1A\r')
             pointer[i-1],pointer[i] = "↑"," "
             time.sleep(0.15)
