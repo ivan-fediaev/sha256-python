@@ -1,11 +1,11 @@
 import sys,time
 
-class SigmaZero:
+class BigSigmaOne:
 
     def __init__(self):
-        self.sigmaZero()
+        self.uSigmaZero()
 
-    def sigmaZero(self):
+    def uSigmaZero(self):
 
         binary = "0b110011010001"
 
@@ -17,52 +17,53 @@ class SigmaZero:
         leadingZeroes = '0'*(32-len(binary))
         binary = leadingZeroes + binary
 
-        rotrText7 = "ROTR 7:  "
-        rotrText18 = "ROTR 18: "
-        shrText3 = "SHR 3:   "
+        rotrText6  = "ROTR 6:  "
+        rotrText11 = "ROTR 11: "
+        rotrText25 = "ROTR 25: "
 
 
         print("x:\t " + binary)
         print("\t " + 32*'-')
-        print(rotrText7 + binary)
-        print(rotrText18 + binary)
-        print(shrText3 + binary)
+        print(rotrText6 + binary)
+        print(rotrText11 + binary)
+        print(rotrText25 + binary)
         print("\t " + 32*'-')
         
-        rotrText7List = list(binary)
-        for _ in range(7):
-            popped = rotrText7List.pop()
-            rotrText7List.insert(0,popped)
+        rotrText6List = list(binary)
+        for _ in range(6):
+            popped = rotrText6List.pop()
+            rotrText6List.insert(0,popped)
 
             time.sleep(0.15)
             print("",end='\033[4A')
-            print(rotrText7+''.join(rotrText7List))
+            print(rotrText6+''.join(rotrText6List))
             print("",end='\033[3B')
 
-        rotrText18List = list(binary)
-        for _ in range(18):
-            popped = rotrText18List.pop()
-            rotrText18List.insert(0,popped)
+        rotrText11List = list(binary)
+        for _ in range(11):
+            popped = rotrText11List.pop()
+            rotrText11List.insert(0,popped)
 
             time.sleep(0.15)
             print("",end='\033[3A')
-            print(rotrText18+''.join(rotrText18List))
+            print(rotrText11+''.join(rotrText11List))
             print("",end='\033[2B')
 
-        shrText3List = list(binary)
-        for _ in range(3):
-            shrText3List.pop()
-            shrText3List.insert(0,'0')
+        rotrText25List = list(binary)
+        for _ in range(25):
+            popped = rotrText25List.pop()
+            rotrText25List.insert(0,popped)
+
+            time.sleep(0.15)
             print("",end='\033[2A')
-            print(shrText3+''.join(shrText3List),end='\r')
+            print(rotrText25+''.join(rotrText25List),end='\r')
             print("",end='\033[2B')
-            time.sleep(0.2)
 
         result = 32*['0']
         pointer = 32*[" "]
         pointer[-1] = "↑"
 
-        binArgs = [rotrText7List, rotrText18List, shrText3List]
+        binArgs = [rotrText6List, rotrText11List, rotrText25List]
         for i in reversed(range(32)):
             currSum = 0
             for val in binArgs:
@@ -82,13 +83,5 @@ class SigmaZero:
         print('\t '+''.join(result))
 
 
-
-        
-            
-
-
-
-
-
-SigmaZero()
+BigSigmaOne()
         
