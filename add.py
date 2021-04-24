@@ -8,10 +8,10 @@ class AddBinary:
         self.addBinaries()
 
     def addBinaries(self):
-        binArgs = ["0b1010",
-        "0b1111",
-        "0b1001",
-        "0b1111"
+        binArgs = ["0b101010",
+        "0b111111",
+        "0b101001",
+        "0b111111"
         ]
 
         if len(sys.argv)-1 >= 2:
@@ -34,7 +34,7 @@ class AddBinary:
         carryOver = 0
         sum = 32*['0']
         pointer = 32*[" "]
-        pointer[-1] = "^"
+        pointer[-1] = "↑"
         for  i in reversed(range(32)):
             currSum = 0
             for val in binArgs:
@@ -58,8 +58,8 @@ class AddBinary:
                     
             time.sleep(0.1)
             print(''.join(sum) + '\n' + ''.join(pointer),end='\033[1A\r')
-            pointer[i-1],pointer[i] = "^"," "
-            time.sleep(0.1)
+            pointer[i-1],pointer[i] = "↑"," "
+            time.sleep(0.2)
             
 
         print(''.join(sum))
