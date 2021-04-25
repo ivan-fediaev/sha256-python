@@ -19,8 +19,10 @@ class AddBinary:
             intArgs = map(int,args)
             binArgs = list(map(bin,intArgs))
     
+            
         maxLen = self.parseBinaries(binArgs)
         
+
         for i in range(len(binArgs)):
             if i == len(binArgs)-1:
                 print(binArgs[i]+' +')
