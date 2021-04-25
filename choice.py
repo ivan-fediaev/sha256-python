@@ -1,15 +1,16 @@
 import sys,time
 
-class Majority:
+class Choice:
     def __init__(self):
-        self.majority()
+        self.choice()
 
-    def majority(self):
-        binArgs = ["0b101010",
-        "0b111111",
-        "0b101000"]
 
-        if len(sys.argv)-1 >= 2:
+    def choice(self):
+        binArgs = ["0b111111110000000011111111",
+        "0b1111111111111111",
+        "0b11111111111111110000000000000000"]
+
+        if len(sys.argv)-1 == 3:
             args = sys.argv[1:]
             intArgs = map(int,args)
             binArgs = list(map(bin,intArgs))
@@ -26,27 +27,20 @@ class Majority:
         pointer[-1] = "↑"
 
         for i in reversed(range(32)):
-            currZeros,currOnes = 0,0
-            for val in binArgs:
-                if val[i] == '1':
-                    currOnes += 1
-                else:
-                    currZeros += 1
-
-            if currZeros > currOnes:
-                result[i] = '0'
+            
+            if binArgs[0][i] == '0':
+                result[i] = binArgs[2][i]
             else:
-                result[i] = '1'
+                result[i] = binArgs[1][i]
 
             time.sleep(0.15)
             print(''.join(result) + '\n' + ''.join(pointer),end='\033[1A\r')
             pointer[i-1],pointer[i] = "↑"," "
             time.sleep(0.15)
 
-
         print(''.join(result))
-            
 
+        
 
     def parseBinaries(self, binArgs):
         for i in range(len(binArgs)):
@@ -60,5 +54,6 @@ class Majority:
             binArgs[i] = leadingZeroes + binArgs[i]
 
         return maxLen
-        
-Majority()
+
+
+Choice()          
